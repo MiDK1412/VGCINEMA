@@ -1,10 +1,7 @@
-import movies from "../data/movie";
-import { useParams} from "react-router-dom";
 
-const BannerTrailer= () => {
-    const { id } = useParams();
 
-    const movie = movies.find((m) => m.id === Number(id));
+const BannerTrailer= ({ movie }) => {
+
     return(
         <div className="w-full h-[420px] bg-black flex justify-center items-center relative">
 

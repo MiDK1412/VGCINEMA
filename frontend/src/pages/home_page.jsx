@@ -6,7 +6,7 @@ import movies from "../data/movie.js"
 
 const home_page = () => {
   return (
-    <div className="min-h-screen bg-gray-950">
+    <div className="min-h-screen bg-white text-black">
       {/*NavBar*/}
         <Navbar/>
 
