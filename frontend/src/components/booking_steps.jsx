@@ -1,62 +1,43 @@
 const steps = [
-  "Select Seats",
-  "Payment",
-  "Confirmation"
+  "Chọn phim / Rạp / Suất",
+  "Chọn ghế",
+  "Thanh toán",
+  "Xác nhận"
 ];
 
 const BookingSteps = ({ currentStep }) => {
 
   return (
-    <div className="w-full flex items-center justify-center mb-10">
+   <div className="border-b border-gray-200 mb-8 flex justify-center">
 
-      {steps.map((step, index) => {
+      <div className="flex gap-8 text-sm font-medium">
 
-        const stepNumber = index + 1;
-        const isActive = currentStep === stepNumber;
-        const isCompleted = currentStep > stepNumber;
+        {steps.map((step, index) => {
 
-        return (
+          const stepNumber = index + 1;
+          const isActive = stepNumber === currentStep;
 
-          <div key={step} className="flex items-center">
+          const isDone = stepNumber < currentStep
 
-            {/* Step Circle */}
+          return (
             <div
-              className={`
-                w-10 h-10 flex items-center justify-center rounded-full font-bold
+              key={step}
+              className={`pb-3 cursor-pointer
                 ${
-                  isCompleted
-                    ? "bg-green-500"
-                    : isActive
-                    ? "bg-red-600"
-                    : "bg-gray-700"
+                  isActive
+                    ? "text-red-600 border-b-2 border-red-600"
+                    :isDone
+                    ? "text-red-400 border-b-2 border-red-400"
+                    : "text-gray-400"
                 }
               `}
             >
-              {stepNumber}
-            </div>
-
-            {/* Step Label */}
-            <span className="ml-3 mr-6 text-sm">
               {step}
-            </span>
+            </div>
+          );
+        })}
 
-            {/* Line */}
-            {index !== steps.length - 1 && (
-              <div
-                className={`
-                  w-20 h-1 mr-6
-                  ${
-                    currentStep > stepNumber
-                      ? "bg-green-500"
-                      : "bg-gray-700"
-                  }
-                `}
-              />
-            )}
-
-          </div>
-        );
-      })}
+      </div>
 
     </div>
   );

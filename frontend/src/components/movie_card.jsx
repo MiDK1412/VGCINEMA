@@ -13,7 +13,7 @@ const MovieCard = ({ movie }) => {
 
         <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-4">
 
-          <h4 className="text-lg font-bold">{movie.title}</h4>
+          <h4 className="text-lg font-bold text-white">{movie.title}</h4>
 
           <p className="text-yellow-400">⭐ {movie.rating}</p>
 

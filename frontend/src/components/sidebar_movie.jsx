@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 const SidebarMovie = ({ movies }) => {
     const navigate = useNavigate();
   return (
-    <div className="bg-white p-2 rounded-lg py-4">
-      <h3 className="font-semibold mb-6 border-l-4 border-blue-500 pl-3">
+    <div className="bg-gray-100 p-2 rounded-lg py-4">
+      <h3 className="font-semibold mb-6 border-l-4 border-red-600 pl-3">
         PHIM ĐANG CHIẾU
       </h3>
       <div className="space-y-6">
@@ -33,7 +33,7 @@ const SidebarMovie = ({ movies }) => {
                 opacity-0 group-hover:opacity-100 transition z-10">
                     <button
                     onClick={() => navigate(`/movie/${m.id}`)}
-                    className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
+                    className="bg-red-600 text-white px-8 py-2 rounded hover:bg-red-700"
                     >
                     Mua Vé
                     </button>

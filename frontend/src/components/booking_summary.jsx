@@ -1,44 +1,63 @@
-const BookingSummary = ({ selectedSeats }) => {
+import { useBooking } from "../contexts/booking_context";
 
-  const price = 8;
-  const total = selectedSeats.length * price;
+const BookingSummary = () => {
+
+  const { movie, hall, date, selectedTime, selectedSeats, total } = useBooking();
+  const get_day_name = (date) => new Date(date).toLocaleDateString("vi-VN", { weekday: "long" });
+  const get_date = new Date(date).toLocaleDateString("vi-VN");
 
   return (
-    <div className="bg-gray-900 p-6 rounded-xl ">
+    <div className="bg-white p-6 rounded-lg ">
 
       <img
-        src="https://image.tmdb.org/t/p/w500/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg"
-        className="rounded-lg mb-4 h-100"
+        src= {movie.poster}
+        className="rounded mb-4 h-90 w-80"
       />
 
-      <h2 className="text-2xl font-bold mb-2">
-        Doctor Strange
+      <h2 className="text-lg font-semibold">
+        {movie.title}
       </h2>
 
-      <p className="text-gray-400">Room: 3</p>
-      <p className="text-gray-400">Time: 19:30</p>
-      <p className="text-gray-400 mb-4">Date: Sat 22 June</p>
+      <p className=" font-semibold"> {hall}</p>
+      <p className="text-sm text-gray-500 mb-4">
+        Suất: {selectedTime} - {get_day_name(date)}, {get_date}
+      </p>
 
-      <hr className="border-gray-700 mb-4" />
+      {
+        selectedSeats.length > 0 && (
+          <>
+            <hr className="my-6 border-t-2 border-dashed border-gray-300" />
+            <div className="flex justify-between">
+              <span> {selectedSeats.length}x Ghế đơn </span>
+              <span> {total.toLocaleString()} đ </span>
+            </div>
+            <p className="text-sm text-gray-600">
+              Ghế: {selectedSeats.join(", ")}
+            </p>
+          </>
+        )
+      }
+    
+      <hr className="my-6 border-t-2 border-dashed border-gray-300" />
 
-      <p>
-        Seats:
-        <span className="text-red-400 ml-2">
-          {selectedSeats.join(", ") || "None"}
+      <div className="flex justify-between font-semibold mt-4">
+        <span>Tổng cộng</span>
+        <span className="text-red-600">
+          {total.toLocaleString()} đ
         </span>
-      </p>
+      </div>
 
-      <p className="mt-2">
-        Price / seat: ${price}
-      </p>
+      <div className="flex justify-between mt-6">
 
-      <p className="text-xl font-bold mt-4">
-        Total: ${total}
-      </p>
+        <button className="text-red-600">
+          Quay lại
+        </button>
 
-      <button className="mt-6 w-full bg-red-600 py-3 rounded-xl hover:bg-red-500">
-        Confirm Booking
-      </button>
+        <button className="bg-red-600 text-white px-6 py-2 rounded">
+          Tiếp tục
+        </button>
+
+      </div>
 
     </div>
   );

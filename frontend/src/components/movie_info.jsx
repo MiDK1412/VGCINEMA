@@ -14,7 +14,7 @@ const MovieInfo = ({ movie }) => {
                     </div>
                     {/* Movie Info */}
                     <div>
-                        <h1 className="text-xl font-bold mb-3">
+                        <h1 className="text-xl font-semibold mb-3">
                         {movie.title}
                         </h1>
                         <p className="text-orange-500 mb-2">
@@ -24,13 +24,13 @@ const MovieInfo = ({ movie }) => {
                         <p className="text-gray-600">Nhà sản xuất: PIXAR</p>
                         {/* Genres */}
                         <div className="flex gap-2 mt-2">
-                        <span className="px-3 py-1 border rounded-lg text-sm">
+                        <span className="px-4 py-1 border border-gray-300 rounded-lg text-sm">
                             Hoạt Hình
                         </span>
-                        <span className="px-3 py-1 border rounded-lg text-sm">
+                        <span className="px-4 py-1 border border-gray-300 rounded-lg text-sm">
                             Phiêu Lưu
                         </span>
-                        <span className="px-3 py-1 border rounded-lg text-sm">
+                        <span className="px-4 py-1 border border-gray-300 rounded-lg text-sm">
                             Hài
                         </span>
                         </div>
@@ -42,13 +42,13 @@ const MovieInfo = ({ movie }) => {
 
                         {/* Actors */}
                         <div className="flex gap-2 mt-2 flex-wrap">
-                            <span className="px-3 py-1 border rounded-lg text-sm">
+                            <span className="px-4 py-1 border border-gray-300 rounded-lg text-sm">
                                 Jon Hamm
                             </span>
-                            <span className="px-3 py-1 border rounded-lg text-sm">
+                            <span className="px-4 py-1 border border-gray-300 rounded-lg text-sm">
                                 Piper Curda
                             </span>
-                            <span className="px-3 py-1 border rounded-lg text-sm">
+                            <span className="px-4 py-1 border border-gray-300 rounded-lg text-sm">
                                 Bobby Moynihan
                             </span>
                         </div>
