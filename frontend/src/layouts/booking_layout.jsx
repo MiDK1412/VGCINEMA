@@ -1,10 +1,26 @@
+import { useEffect } from "react";
+import { useBooking } from "../contexts/booking_context";
+
 import Navbar from "../components/navbar";
 import SeatSelector from "../components/seat_selector";
 import BookingSummary from "../components/booking_summary";
 import BookingSteps from "../components/booking_steps";
 import ShowtimeSwitcher from "../components/showtime_switcher"
 
-const BookingLayout = ({ times }) => {
+const BookingLayout = ({ movie, hall, date, selectedTime, times, price }) => {
+
+  const { booking, setBookingInfo } = useBooking();
+  console.log(booking);
+  
+  useEffect(() => {
+    setBookingInfo({
+      movie,
+      hall,
+      date,
+      time: selectedTime,
+      price,
+    });
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-100 text-black">

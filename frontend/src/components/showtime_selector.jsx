@@ -16,7 +16,11 @@ const ShowTimeSeletor = ({showtimes}) => {
     const navigate = useNavigate();
 
     const handleBooking = (show, time) => {
-      navigate(`/booking/${show.id}`);
+      navigate(`/booking/${show.id}`, {
+        state: {
+          selectedTime: time
+        }
+      });
     };
 
   return (

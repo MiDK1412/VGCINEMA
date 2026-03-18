@@ -9,16 +9,17 @@ const vipRows = ["E", "F"];
 
 const SeatSelector = () => {
 
-    const { selectedSeats, setSelectedSeats } = useBooking();
+    const { booking, setBookingInfo } = useBooking();
+    const selectedSeats = booking.seats || [];
 
     const toggleSeat = (seat) => {
         if (bookedSeats.includes(seat)) return;
 
-        if (selectedSeats.includes(seat)) {
-        setSelectedSeats(selectedSeats.filter((s) => s !== seat));
-        } else {
-        setSelectedSeats([...selectedSeats, seat]);
-        }
+        const seats= booking.seats.includes(seat)
+        ? booking.seats.filter((s) => s !== seat)
+        : [...booking.seats, seat];
+
+        setBookingInfo({seats});
     };
 
     return(
