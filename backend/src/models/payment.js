@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { PAYMENT_METHODS } from "../constants/payment_methods.js";
 
 const payment_schema = new mongoose.Schema(
     {
@@ -14,7 +15,7 @@ const payment_schema = new mongoose.Schema(
         },
         payment_method: {
             type: String,
-            enum: ["credit_card","cash"],
+            enum: PAYMENT_METHODS.map((method) => method.id),
             required: true
         },
         transaction_id: {

@@ -1,11 +1,14 @@
+import { useState } from "react";
+
 import Navbar from "../components/navbar"
+import PaymentLayout from "../layouts/payment_layout"
 
 
 const PaymentPage = () => {
     return(
-        <div className="min-h-screen bg-gray-100">
-            <Navbar/>
-        </div>
+        <PaymentLayout
+
+        />
     )
 }
 

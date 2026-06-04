@@ -1,15 +1,17 @@
 import React from 'react';
-import MovieCard from "../components/movie_card.jsx";
+import MovieCard from "../components/home/movie_card.jsx";
 import Navbar from "../components/navbar.jsx"
-import HeroBanner from "../components/hero_banner.jsx"
+import HeroBanner from "../components/home/hero_banner.jsx"
 import movies from "../data/movie.js"
+import { useState } from 'react';
 
 const home_page = () => {
-  return (
-    <div className="min-h-screen bg-white text-black">
-      {/*NavBar*/}
-        <Navbar/>
 
+  const [showAuthModal, setShowAuthModal] = useState(false);
+
+  return (
+    <div className="min-h-screen bg-gray-100 text-black">
+      {/*HeroBanner*/}
         <HeroBanner/>
        {/* NOW SHOWING */}
       <section className="px-10 py-12">

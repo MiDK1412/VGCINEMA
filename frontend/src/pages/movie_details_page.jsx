@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 import movies from "../data/movie";
 import Navbar from "../components/navbar";
-import BannerTrailer from "../components/banner_trailer";
-import MovieInfo from "../components/movie_info";
-import SidebarMovie from "../components/sidebar_movie";
-import ShowtimeSelector from "../components/showtime_selector";
+import BannerTrailer from "../components/movie_detail/banner_trailer";
+import MovieInfo from "../components/movie_detail/movie_info";
+import SidebarMovie from "../components/movie_detail/sidebar_movie";
+import ShowtimeSelector from "../components/movie_detail/showtime_selector";
 import showtimes from "../data/showtime";
 
 const MovieDetailPage = () =>{
@@ -16,7 +16,6 @@ const MovieDetailPage = () =>{
 
     return (
         <div className="min-h-screen bg-gray-100 text-black">
-            <Navbar/>
             <BannerTrailer movie={movie}/>
             <div className="max-w-7xl mx-auto grid grid-cols-14 gap-4 pb-20">
                 <div className="col-span-10 bg-gray-100 rounded-lg ">

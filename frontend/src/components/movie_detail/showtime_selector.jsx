@@ -1,21 +1,24 @@
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/auth_context";
 
 const ShowTimeSeletor = ({showtimes}) => {
 
+    const { account, openAuth } = useAuth();
     const dates = useMemo(() => [...new Set(showtimes.map((s) => s.date))], [showtimes]);
-
     const [selectedDate, setSelectedDate] = useState(dates[0] || null);
-
     const filtered_showtimes = useMemo(() => showtimes.filter(
       (s) => s.date === selectedDate),
       [showtimes, selectedDate]);
-
     const get_day_name = (date) => new Date(date).toLocaleDateString("vi-VN", { weekday: "long" });
 
     const navigate = useNavigate();
 
     const handleBooking = (show, time) => {
+      if (!account) {
+        openAuth();
+        return;
+      }
       navigate(`/booking/${show.id}`, {
         state: {
           selectedTime: time

@@ -1,22 +1,46 @@
-import { useBooking } from "../contexts/booking_context";
+import { useBooking } from "../../contexts/booking_context";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/auth_context";
 
 const BookingSummary = () => {
-
-  const { booking, total } = useBooking();
+  const { account, openAuth } = useAuth();
+  const { booking, total, setBookingInfo } = useBooking();
   const { movie, hall, date, time, seats } = booking;
+  const navigate = useNavigate();
+
   const get_day_name = (date) => new Date(date).toLocaleDateString("vi-VN", { weekday: "long" });
   const get_date = new Date(date).toLocaleDateString("vi-VN");
 
-  const navigate = useNavigate();
   const handleContinue = () => {
+    if (!account) {
+      openAuth(); // 👉 mở modal thay vì redirect
+      return;
+    }
+    if (!booking.expiredAt){
+      setBookingInfo({
+        expiredAt:
+        Date.now() + 6 * 60 * 1000
+      });
+    }
     navigate("/payment");
   };
+  
+  if (!movie) {
+    return (
 
-  if (!movie) return null;
+      <div className="bg-white p-6 rounded-lg">
+
+        <p className="text-gray-500">
+          Đang tải thông tin vé...
+        </p>
+
+      </div>
+
+    );
+  }
 
   return (
-    <div className="bg-white p-6 rounded-lg ">
+    <div className="bg-white p-6 rounded-lg sticky top-5 self-start">
 
       <img
         src= {movie.poster}
@@ -64,7 +88,7 @@ const BookingSummary = () => {
 
         <button
          onClick={handleContinue}
-         className="bg-red-600 text-white px-6 py-2 rounded">
+         className="btn-primary px-6 py-2">
           Tiếp tục
         </button>
 

@@ -1,4 +1,5 @@
 import Payment from '../models/payment.js'
+import { PAYMENT_METHODS } from "../constants/payment_methods.js";
 
 export const get_all_payment_list = async (req, res) => {
     try {
@@ -13,6 +14,10 @@ export const get_all_payment_list = async (req, res) => {
         })
     }
 }
+
+export const get_payment_methods = (req, res) => {
+  res.json(PAYMENT_METHODS);
+};
 
 export const create_payment = async (req, res) => {
     try {

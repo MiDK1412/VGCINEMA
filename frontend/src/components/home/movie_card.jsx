@@ -17,7 +17,7 @@ const MovieCard = ({ movie }) => {
 
           <p className="text-yellow-400">⭐ {movie.rating}</p>
 
-          <button className="mt-2 bg-red-600 py-2 rounded-lg hover:bg-red-500 text-white">
+          <button className="btn-primary">
             Mua Vé
           </button>
 

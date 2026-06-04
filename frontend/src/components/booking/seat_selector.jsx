@@ -1,4 +1,4 @@
-import { useBooking } from "../contexts/booking_context";
+import { useBooking } from "../../contexts/booking_context";
 
 const rows = "ABCDEFGHIJKLM".split("");
 const reversedRows = [...rows].reverse();

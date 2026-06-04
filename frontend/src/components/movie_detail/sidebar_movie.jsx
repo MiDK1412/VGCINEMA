@@ -33,7 +33,7 @@ const SidebarMovie = ({ movies }) => {
                 opacity-0 group-hover:opacity-100 transition z-10">
                     <button
                     onClick={() => navigate(`/movie/${m.id}`)}
-                    className="bg-red-600 text-white px-8 py-2 rounded hover:bg-red-700"
+                    className="btn-primary px-8 py-2 "
                     >
                     Mua Vé
                     </button>
